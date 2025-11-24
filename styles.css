@@ -1,0 +1,1043 @@
+/* ===============================
+   Design tokens (from index.css)
+   =============================== */
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 203 48% 22%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 203 48% 22%;
+
+  --popover: 0 0% 100%;
+  --popover-foreground: 203 48% 22%;
+
+  --primary: 203 48% 22%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 182 57% 40%;
+  --secondary-foreground: 0 0% 100%;
+
+  --muted: 210 40% 96%;
+  --muted-foreground: 203 20% 45%;
+
+  --accent: 0 100% 60%;
+  --accent-foreground: 0 0% 100%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+
+  --border: 210 40% 90%;
+  --input: 210 40% 90%;
+  --ring: 203 48% 22%;
+
+  --radius: 1.5rem;
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(203 48% 22%) 0%,
+    hsl(182 57% 40%) 100%
+  );
+  --gradient-hero: linear-gradient(
+    180deg,
+    hsl(0 0% 100%) 0%,
+    hsl(210 40% 98%) 100%
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(182 57% 40%) 0%,
+    hsl(203 48% 22%) 100%
+  );
+
+  --shadow-soft: 0 1px 3px hsl(0 0% 0% / 0.04),
+    0 1px 2px hsl(0 0% 0% / 0.03);
+  --shadow-medium: 0 4px 6px hsl(0 0% 0% / 0.04),
+    0 2px 4px hsl(0 0% 0% / 0.03);
+  --shadow-large: 0 10px 15px hsl(0 0% 0% / 0.05),
+    0 4px 6px hsl(0 0% 0% / 0.04);
+}
+
+/* ===============================
+   Base / reset
+   =============================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+* {
+  font-family: "Open Sans", Arial, sans-serif;
+}
+
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  padding-top: 80px; /* for fixed header */
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===============================
+   Layout helpers
+   =============================== */
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ===============================
+   Typography
+   =============================== */
+
+/* Headings based on your React home page */
+
+/* Hero-sized main heading */
+h1 {
+  font-size: clamp(2.9rem, 4vw, 3.9rem);
+  line-height: 1.05;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin: 0 0 1rem;
+}
+
+/* Section titles ("AntiPath-ML...", "Vaccine Genomics", etc.) */
+h2 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+}
+
+/* Feature block titles ("Precision Detection" etc.) */
+h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+/* Smaller subheadings if you ever need them */
+h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+/* Body text */
+p {
+  font-size: 1.2rem;             /* base text size */
+  font-weight: 400;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
+  margin: 0 0 1rem;
+}
+
+/* Slightly larger intro/lead paragraphs (hero + section intros) */
+p.lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+/* ==== Class-based helpers now only handle color / layout, NOT font-size ==== */
+
+/* Gradient accent stays as-is */
+.hero-title-accent {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--primary)),
+    hsl(var(--secondary)),
+    hsl(var(--accent))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* If your hero text is <h1 class="hero-title">, this just keeps margin behavior */
+.hero-title {
+  margin: 0 0 1rem;
+}
+
+/* Hero lead paragraph – layout & color only, font-size from p / p.lead */
+.hero-lead {
+  color: hsl(var(--muted-foreground));
+  max-width: 38rem;
+  margin: 0 auto 2.5rem;
+}
+
+/* Section title class – margin only, h2 controls typography */
+.section-title {
+  margin: 0 0 1rem;
+}
+
+/* Section intro paragraph – layout & color only */
+.section-intro {
+  color: hsl(var(--muted-foreground));
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+/* Feature title – margin only, h3 controls typography */
+.feature-title {
+  margin: 0 0 0.5rem;
+}
+
+/* Feature body – layout & color only */
+.feature-body {
+  color: hsl(var(--muted-foreground));
+  margin: 0;
+}
+
+
+/* ===============================
+   Header / Navigation
+   =============================== */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background-color: hsla(0, 0%, 100%, 0.95);
+  backdrop-filter: blur(16px);
+}
+
+/* FLEX CONTAINER */
+.nav {
+  display: flex;
+  align-items: center;
+  height: 4.5rem;
+}
+
+/* LOGO – pinned left */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  margin-right: auto;
+}
+
+.nav-logo-img {
+  height: 3.6rem;
+  width: auto;
+}
+
+/* NAV LINKS – pinned right on desktop */
+.nav-links {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+  margin-left: auto;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;          /* thinner underline */
+  text-underline-offset: 4px;              /* nice spacing */
+  text-decoration-color: hsl(var(--foreground));
+  color: hsl(var(--foreground));           /* make selected text dark */
+}
+
+
+/* MOBILE: burger right */
+.nav-toggle {
+  margin-left: auto;
+}
+
+/* MAKE HEADER FULL-WIDTH (IMPORTANT) */
+.site-header .container {
+  max-width: 100%;
+  margin: 0;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+/* Desktop breakpoint */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+  }
+  .nav-toggle {
+    display: none;
+  }
+}
+
+
+
+/* ===============================
+   Buttons
+   =============================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.65rem 1.5rem;
+  cursor: pointer;
+  transition:
+    background-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.12s ease,
+    color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.btn-lg {
+  padding: 0.9rem 1.9rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-primary:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  background-color: #fff;
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.btn-outline:hover {
+  background: var(--gradient-primary);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-icon {
+  font-size: 1.1em;
+}
+
+/* ===============================
+   Hero
+   =============================== */
+
+.hero {
+  background: var(--gradient-hero);
+}
+
+.hero-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Hero image wrapper – matches React size but stays responsive */
+.hero-media {
+  margin: 0 auto;
+  max-width: 56rem;   /* 56rem × 16px ≈ 896px → matches your 894px */
+  width: 100%;        /* let it shrink on smaller screens */
+}
+
+/* Make sure the card takes full width of that wrapper */
+.card-hero {
+  overflow: hidden;
+  border-radius: 1.75rem;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  margin-top:30px;
+}
+
+/* Image already good, but for clarity: */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-action {
+  margin-top: 2rem;
+}
+
+/* ===============================
+   Cards & shared elements
+   =============================== */
+
+.card {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-soft);
+}
+
+.card-hero {
+  overflow: hidden;
+  border-radius: 1.75rem;
+  aspect-ratio: 16 / 9;
+}
+
+.card-image {
+  overflow: hidden;
+  border-radius: 1.75rem;
+  aspect-ratio: 4 / 3;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===============================
+   Product / Features
+   =============================== */
+
+.section-product {
+  background-color: #fff;
+}
+
+.section-header {
+  margin-bottom: 2.5rem;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 2.5rem 0 3.5rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid hsl(var(--secondary) / 0.2);
+  background: linear-gradient(
+    90deg,
+    hsl(var(--secondary) / 0.08),
+    hsl(var(--secondary) / 0.03)
+  );
+  box-shadow: var(--shadow-soft);
+  font-size: 0.9rem;
+  color: hsl(var(--secondary));
+  font-weight: 500;
+}
+
+.pill-icon {
+  font-size: 1rem;
+}
+
+/* Feature grid: 3 rows of text+image */
+.feature-grid {
+  display: grid;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.feature-text,
+.feature-media {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-icon-circle {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.4rem;
+}
+
+.feature-icon-primary {
+  background-color: hsl(var(--primary) / 0.08);
+}
+
+.feature-icon-secondary {
+  background-color: hsl(var(--secondary) / 0.08);
+}
+
+.feature-icon-accent {
+  background-color: hsl(var(--accent) / 0.08);
+}
+
+@media (min-width: 900px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4rem;
+  }
+}
+
+/* ===============================
+   Vaccine Genomics
+   =============================== */
+
+.section-vaccine {
+  background-color: #fff;
+  border-top: 1px solid hsl(var(--border) / 0.7);
+  border-bottom: 1px solid hsl(var(--border) / 0.7);
+}
+
+.vaccine-inner {
+  max-width: 48rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.vaccine-card {
+  margin: 2.5rem auto 0;
+  max-width: 40rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background-color: hsl(var(--muted));
+}
+
+.vaccine-placeholder {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   Customers
+   =============================== */
+
+.section-customers {
+  background-color: #f8f8f8;
+}
+
+.customers-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-items: center;
+}
+
+.customer-logo img {
+  max-height: 5rem;
+  width: auto;
+  opacity: 0.75;
+  transition: opacity 0.18s ease;
+}
+
+.customer-logo img:hover {
+  opacity: 1;
+}
+
+/* ===============================
+   Contact
+   =============================== */
+
+.section-contact {
+  background-color: #fff;
+}
+
+.contact-action {
+  margin-top: 2.5rem;
+  text-align: center;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+
+.site-footer {
+  background-color: hsl(var(--muted) / 0.3);
+  border-top: 1px solid hsl(var(--border));
+}
+
+.footer-inner {
+  padding: 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-logo-img {
+  width: 3.5rem;
+  height: auto;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.footer-link {
+  font-size: 0.85rem;
+  color: hsl(var(--muted-foreground));
+  transition: color 0.18s ease;
+}
+
+.footer-link:hover {
+  color: hsl(var(--foreground));
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: hsl(var(--muted-foreground));
+}
+
+@media (min-width: 768px) {
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+/* ===============================
+   Animation (fade-in-up)
+   =============================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   About page (add-only styles)
+   =============================== */
+
+/* Intro text on About page */
+.about-intro {
+  max-width: 52rem;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+/* Small pill label above the main about heading */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--secondary));
+  background-color: hsl(var(--secondary) / 0.08);
+}
+
+/* ---------- Founders section ---------- */
+
+.founders-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .founders-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.founder-card {
+  background-color: hsl(var(--card));
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-soft);
+  padding: 2rem 1.75rem 1.75rem;
+  text-align: center;
+}
+
+.founder-photo {
+  width: 100%;
+  max-width: 230px;
+  margin: 0 auto 1.25rem;
+  aspect-ratio: 3 / 4;
+  border-radius: 1.25rem;
+  object-fit: cover;
+}
+
+.founder-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.founder-role {
+  font-size: 0.95rem;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 0.75rem;
+}
+
+/* ---------- Core team grid ---------- */
+
+.team-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.team-card {
+  background-color: hsl(182 57% 40%);
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  box-shadow: var(--shadow-soft);
+  padding: 1.75rem 1.5rem 1.5rem;
+  text-align: center;
+}
+
+.team-photo {
+  width: 100%;
+  max-width: 210px;
+  margin: 0 auto 1rem;
+  aspect-ratio: 3 / 4;
+  border-radius: 1.25rem;
+  object-fit: cover;
+}
+
+.team-name {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color:#f8f8f8
+}
+
+.team-role {
+  font-size: 0.93rem;
+  color: hsl(var(--muted-foreground));
+}
+/* ===============================
+   About page – shared helpers
+   =============================== */
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+.section-about .section-title {
+  max-width: 65rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-intro {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ===============================
+   Success Stories
+   =============================== */
+
+.section-success {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.success-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.success-card {
+  padding: 2.25rem 2.5rem;
+  border-radius: 1.5rem;
+  border: 1px solid hsl(var(--border) / 0.7);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.success-quote {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 1.75rem;
+}
+
+.success-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid hsl(var(--border) / 0.7);
+  padding-top: 1.25rem;
+}
+
+.success-meta-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.success-logo {
+  height: 1.75rem;
+  width: auto;
+  object-fit: contain;
+}
+
+.success-org {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+@media (min-width: 900px) {
+  .success-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ===============================
+   Milestones / Our Journey
+   =============================== */
+
+.section-milestones {
+  background-color: #fff;
+}
+
+.milestones-list {
+  max-width: 52rem;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.milestone-item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.milestone-icon {
+  flex-shrink: 0;
+}
+
+.milestone-icon-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+  background: var(--gradient-primary);
+  box-shadow: var(--shadow-medium);
+  font-size: 1.4rem;
+  color: #fff;
+}
+
+.milestone-content {
+  flex: 1;
+}
+
+.milestone-year {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(var(--secondary));
+  margin-bottom: 0.25rem;
+}
+
+.milestone-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+/* ===============================
+   Founders & Team cards
+   =============================== */
+
+.section-founders {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.founder-card {
+  padding: 1.75rem 1.75rem 2rem;
+  text-align: center;
+}
+
+.founder-photo {
+  width: 9rem;
+  height: 9rem;
+  border-radius: 999px;
+  object-fit: cover;
+  margin: 0 auto 1.25rem;
+}
+
+.founder-name {
+  margin: 0 0 0.25rem;
+}
+
+.founder-role {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: hsl(var(--secondary));
+}
+
+.section-team {
+  background-color: #fbfcfd;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.team-card {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.team-photo {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 999px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+}
+
+.team-name {
+  margin: 0 0 0.25rem;
+}
+
+.team-role {
+  margin: 0;
+  font-size: 0.9rem;
+  color: hsl(var(--muted-foreground));
+}
+p.team-role {color:#f8f8f8};
+}
+
+@media (min-width: 768px) {
+  .founders-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* === About page tweaks: square photos + centered single founder === */
+
+/* Center the founders row even when there is only one card */
+.founders-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1.75rem;
+  margin-top: 2rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Square photos for founder + team cards */
+.founder-photo,
+.team-photo {
+  width: 14.5rem;     /* adjust if you want bigger/smaller */
+  height: 13.5rem;    /* same as width -> perfect square */
+  object-fit: cover;
+  border-radius: 1rem;  /* rounded-square; use 0 for sharp corners */
+  display: block;
+  margin: 0 auto 1.25rem;
+}
+.founder-photo{
+  height:19.5rem
+  }
