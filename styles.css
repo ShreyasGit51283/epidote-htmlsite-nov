@@ -3,45 +3,45 @@
    =============================== */
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 203 48% 22%;
+  --background: #0f0f0f;
+  --foreground: #ffffff;
 
-  --card: 0 0% 100%;
-  --card-foreground: 203 48% 22%;
+  --card: #28384a;
+  --card-foreground: #ffffff;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 203 48% 22%;
+  --popover: #1b2633;
+  --popover-foreground: #ffffff;
 
-  --primary: 203 48% 22%;
-  --primary-foreground: 0 0% 100%;
+  --primary: #529bd9;
+  --primary-foreground: #ffffff;
 
-  --secondary: 182 57% 40%;
-  --secondary-foreground: 0 0% 100%;
+  --secondary: #33cccc;
+  --secondary-foreground: #ffffff;
 
-  --muted: 210 40% 96%;
-  --muted-foreground: 203 20% 45%;
+  --muted: #2d3e50;
+  --muted-foreground: #c6c6c6;
 
-  --accent: 0 100% 60%;
-  --accent-foreground: 0 0% 100%;
+  --accent: #e87a90;
+  --accent-foreground: #ffffff;
 
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 100%;
+  --destructive: #e62e2e;
+  --destructive-foreground: #ffffff;
 
-  --border: 210 40% 90%;
-  --input: 210 40% 90%;
-  --ring: 203 48% 22%;
+  --border: #36485a;
+  --input: #36485a;
+  --ring: #529bd9;
 
   --radius: 1.5rem;
 
   --gradient-primary: linear-gradient(
     135deg,
-    hsl(203 48% 22%) 0%,
-    hsl(182 57% 40%) 100%
+    var(--primary) 0%,
+    var(--secondary) 100%
   );
   --gradient-hero: linear-gradient(
-    180deg,
-    hsl(0 0% 100%) 0%,
-    hsl(210 40% 98%) 100%
+    90deg, /* left-to-right */
+    var(--background) 0%,
+    #1f1f1f 100% /* slightly lighter dark grey */
   );
   --gradient-accent: linear-gradient(
     135deg,
@@ -49,12 +49,12 @@
     hsl(203 48% 22%) 100%
   );
 
-  --shadow-soft: 0 1px 3px hsl(0 0% 0% / 0.04),
-    0 1px 2px hsl(0 0% 0% / 0.03);
-  --shadow-medium: 0 4px 6px hsl(0 0% 0% / 0.04),
-    0 2px 4px hsl(0 0% 0% / 0.03);
-  --shadow-large: 0 10px 15px hsl(0 0% 0% / 0.05),
-    0 4px 6px hsl(0 0% 0% / 0.04);
+  --shadow-soft: 0 1px 3px #0000000a,
+    0 1px 2px #00000008;
+  --shadow-medium: 0 4px 6px #0000000a,
+    0 2px 4px #00000008;
+  --shadow-large: 0 10px 15px #0000000d,
+    0 4px 6px #0000000a;
 }
 
 /* ===============================
@@ -65,7 +65,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  border-color: hsl(var(--border));
+  border-color: var(--border);
 }
 
 html {
@@ -79,8 +79,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
+  background-color: var(--background);
+  color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   padding-top: 80px; /* for fixed header */
 }
@@ -121,7 +121,7 @@ a {
 
 /* Hero-sized main heading */
 h1 {
-  font-size: clamp(2.9rem, 4vw, 3.9rem);
+  font-size: clamp(5rem, 4vw, 3.9rem);
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -158,7 +158,7 @@ p {
   font-size: 1.2rem;             /* base text size */
   font-weight: 400;
   line-height: 1.7;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   margin: 0 0 1rem;
 }
 
@@ -172,25 +172,28 @@ p.lead {
 
 /* Gradient accent stays as-is */
 .hero-title-accent {
-  background: linear-gradient(
-    90deg,
-    hsl(var(--primary)),
-    hsl(var(--secondary)),
-    hsl(var(--accent))
-  );
+  background: linear-gradient(90deg, #23E0D8,#23E0D8, #FF2369,#ed1c25);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
+.our-offerings {
+    border: 1px solid #c86666;
+    padding: .5rem;
+    display: inline-block;
+    border-radius: 42px;
+    margin: 2rem;
+    background: #0f0f0f;
+}
 /* If your hero text is <h1 class="hero-title">, this just keeps margin behavior */
 .hero-title {
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
 }
 
 /* Hero lead paragraph – layout & color only, font-size from p / p.lead */
 .hero-lead {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   max-width: 38rem;
   margin: 0 auto 2.5rem;
 }
@@ -201,10 +204,19 @@ p.lead {
 }
 
 /* Section intro paragraph – layout & color only */
-.section-intro {
-  color: hsl(var(--muted-foreground));
-  max-width: 44rem;
+.section-intro-large {
+  color: var(--muted-foreground);
+  max-width: 65rem;
   margin: 0 auto;
+  font-size: 1.8rem;
+  font-weight:100;
+}
+.section-intro-small {
+  color: var(--muted-foreground);
+  max-width: 65rem;
+  margin: 2rem auto;
+  font-size: 1.3rem;
+  font-weight:100;
 }
 
 /* Feature title – margin only, h3 controls typography */
@@ -214,7 +226,7 @@ p.lead {
 
 /* Feature body – layout & color only */
 .feature-body {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   margin: 0;
 }
 
@@ -229,8 +241,9 @@ p.lead {
   left: 0;
   right: 0;
   z-index: 50;
-  background-color: hsla(0, 0%, 100%, 0.95);
+  background-color: #ffffffeb;
   backdrop-filter: blur(16px);
+  background-color: #0f0f0fcc;
 }
 
 /* FLEX CONTAINER */
@@ -261,11 +274,12 @@ p.lead {
 }
 
 .nav-link.active {
+  font-weight:600;
   text-decoration: underline;
   text-decoration-thickness: 1px;          /* thinner underline */
   text-underline-offset: 4px;              /* nice spacing */
-  text-decoration-color: hsl(var(--foreground));
-  color: hsl(var(--foreground));           /* make selected text dark */
+  text-decoration-color: var(--foreground);
+  color: var(--foreground);           /* make selected text dark */
 }
 
 
@@ -334,13 +348,13 @@ p.lead {
 }
 
 .btn-outline {
-  background-color: #fff;
-  border-color: hsl(var(--border));
-  color: hsl(var(--foreground));
+  background-color: transparent;
+  border-color: var(--border);
+  color: var(--foreground);
 }
 
 .btn-outline:hover {
-  background: var(--gradient-primary);
+  background-color: #ffffff1a;
   color: #fff;
   border-color: transparent;
   box-shadow: var(--shadow-medium);
@@ -367,7 +381,7 @@ p.lead {
 
 /* Hero image wrapper – matches React size but stays responsive */
 .hero-media {
-  margin: 0 auto;
+  margin: 4rem 0;
   max-width: 56rem;   /* 56rem × 16px ≈ 896px → matches your 894px */
   width: 100%;        /* let it shrink on smaller screens */
 }
@@ -388,13 +402,6 @@ p.lead {
   object-fit: cover;
 }
 
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
 .hero-action {
   margin-top: 2rem;
 }
@@ -404,10 +411,10 @@ p.lead {
    =============================== */
 
 .card {
-  background-color: hsl(var(--card));
-  color: hsl(var(--card-foreground));
+  background-color: var(--card);
+  color: var(--card-foreground);
   border-radius: 1.5rem;
-  border: 1px solid hsl(var(--border) / 0.5);
+  border: 1px solid #36485a80;
   box-shadow: var(--shadow-soft);
 }
 
@@ -434,7 +441,7 @@ p.lead {
    =============================== */
 
 .section-product {
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 .section-header {
@@ -455,15 +462,15 @@ p.lead {
   gap: 0.5rem;
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
-  border: 1px solid hsl(var(--secondary) / 0.2);
+  border: 1px solid #33cccc33;
   background: linear-gradient(
     90deg,
-    hsl(var(--secondary) / 0.08),
-    hsl(var(--secondary) / 0.03)
+    #33cccc14,
+    #33cccc08
   );
   box-shadow: var(--shadow-soft);
   font-size: 0.9rem;
-  color: hsl(var(--secondary));
+  color: var(--secondary);
   font-weight: 500;
 }
 
@@ -497,15 +504,15 @@ p.lead {
 }
 
 .feature-icon-primary {
-  background-color: hsl(var(--primary) / 0.08);
+  background-color: #529bd914;
 }
 
 .feature-icon-secondary {
-  background-color: hsl(var(--secondary) / 0.08);
+  background-color: #33cccc14;
 }
 
 .feature-icon-accent {
-  background-color: hsl(var(--accent) / 0.08);
+  background-color: #e87a9014;
 }
 
 @media (min-width: 900px) {
@@ -516,13 +523,49 @@ p.lead {
 }
 
 /* ===============================
+   New Features Section
+   =============================== */
+
+.section-features {
+  background-color: var(--background);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  margin-top: 2.5rem;
+}
+
+.feature-card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border-radius: 1.5rem;
+  border: 1px solid #36485a80;
+  box-shadow: var(--shadow-soft);
+  padding: 2rem;
+  text-align: left;
+}
+
+.feature-card .feature-icon-circle {
+  margin-bottom: 1.5rem; /* More space in card */
+}
+
+@media (min-width: 768px) {
+  .features-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+}
+
+/* ===============================
    Vaccine Genomics
    =============================== */
 
 .section-vaccine {
-  background-color: #fff;
-  border-top: 1px solid hsl(var(--border) / 0.7);
-  border-bottom: 1px solid hsl(var(--border) / 0.7);
+  background-color: var(--background);
+  border-top: 1px solid #36485ab3;
+  border-bottom: 1px solid #36485ab3;
 }
 
 .vaccine-inner {
@@ -538,11 +581,11 @@ p.lead {
   align-items: center;
   justify-content: center;
   aspect-ratio: 16 / 9;
-  background-color: hsl(var(--muted));
+  background-color: var(--muted);
 }
 
 .vaccine-placeholder {
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   font-size: 0.95rem;
 }
 
@@ -551,7 +594,7 @@ p.lead {
    =============================== */
 
 .section-customers {
-  background-color: #f8f8f8;
+  background-color: var(--background);
 }
 
 .customers-grid {
@@ -565,12 +608,14 @@ p.lead {
 .customer-logo img {
   max-height: 5rem;
   width: auto;
-  opacity: 0.75;
-  transition: opacity 0.18s ease;
+  opacity: 0.6;
+  filter: grayscale(1) brightness(1.5);
+  transition: all 0.18s ease;
 }
 
 .customer-logo img:hover {
-  opacity: 1;
+  opacity: 0.9;
+  filter: grayscale(0) brightness(1);
 }
 
 /* ===============================
@@ -578,7 +623,7 @@ p.lead {
    =============================== */
 
 .section-contact {
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 .contact-action {
@@ -591,8 +636,8 @@ p.lead {
    =============================== */
 
 .site-footer {
-  background-color: hsl(var(--muted) / 0.3);
-  border-top: 1px solid hsl(var(--border));
+  background-color: var(--background);
+  border-top: 1px solid var(--border);
 }
 
 .footer-inner {
@@ -623,17 +668,17 @@ p.lead {
 
 .footer-link {
   font-size: 0.85rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   transition: color 0.18s ease;
 }
 
 .footer-link:hover {
-  color: hsl(var(--foreground));
+  color: var(--foreground);
 }
 
 .footer-copy {
   font-size: 0.8rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 @media (min-width: 768px) {
@@ -679,28 +724,16 @@ p.lead {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: hsl(var(--secondary));
-  background-color: hsl(var(--secondary) / 0.08);
+  color: var(--secondary);
+  background-color: #33cccc14;
 }
 
 /* ---------- Founders section ---------- */
 
-.founders-grid {
-  display: grid;
-  gap: 2.5rem;
-  margin-top: 2rem;
-}
-
-@media (min-width: 768px) {
-  .founders-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
 .founder-card {
-  background-color: hsl(var(--card));
+  background-color: var(--card);
   border-radius: 1.5rem;
-  border: 1px solid hsl(var(--border) / 0.5);
+  border: 1px solid #36485a80;
   box-shadow: var(--shadow-soft);
   padding: 2rem 1.75rem 1.75rem;
   text-align: center;
@@ -723,7 +756,7 @@ p.lead {
 
 .founder-role {
   font-size: 0.95rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   margin-bottom: 0.75rem;
 }
 
@@ -748,9 +781,9 @@ p.lead {
 }
 
 .team-card {
-  background-color: hsl(182 57% 40%);
+  background-color: var(--card);
   border-radius: 1.5rem;
-  border: 1px solid hsl(var(--border) / 0.5);
+  border: 1px solid #36485a80;
   box-shadow: var(--shadow-soft);
   padding: 1.75rem 1.5rem 1.5rem;
   text-align: center;
@@ -769,12 +802,12 @@ p.lead {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.25rem;
-  color:#f8f8f8
+  color: var(--card-foreground);
 }
 
 .team-role {
   font-size: 0.93rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--secondary);
 }
 /* ===============================
    About page – shared helpers
@@ -787,7 +820,7 @@ p.lead {
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
 
 .section-about .section-title {
@@ -807,7 +840,7 @@ p.lead {
    =============================== */
 
 .section-success {
-  background-color: hsl(var(--muted) / 0.3);
+  background-color: var(--background);
 }
 
 .success-grid {
@@ -820,7 +853,7 @@ p.lead {
 .success-card {
   padding: 2.25rem 2.5rem;
   border-radius: 1.5rem;
-  border: 1px solid hsl(var(--border) / 0.7);
+  border: 1px solid #36485ab3;
   box-shadow: var(--shadow-soft);
   display: flex;
   flex-direction: column;
@@ -830,7 +863,7 @@ p.lead {
 .success-quote {
   font-size: 1rem;
   line-height: 1.7;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
   margin-bottom: 1.75rem;
 }
 
@@ -838,7 +871,7 @@ p.lead {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid hsl(var(--border) / 0.7);
+  border-top: 1px solid #36485ab3;
   padding-top: 1.25rem;
 }
 
@@ -857,7 +890,7 @@ p.lead {
 .success-org {
   font-size: 0.9rem;
   font-weight: 600;
-  color: hsl(var(--foreground));
+  color: var(--foreground);
 }
 
 @media (min-width: 900px) {
@@ -871,7 +904,7 @@ p.lead {
    =============================== */
 
 .section-milestones {
-  background-color: #fff;
+  background-color: var(--background);
 }
 
 .milestones-list {
@@ -912,7 +945,7 @@ p.lead {
 .milestone-year {
   font-size: 0.9rem;
   font-weight: 600;
-  color: hsl(var(--secondary));
+  color: var(--secondary);
   margin-bottom: 0.25rem;
 }
 
@@ -927,7 +960,7 @@ p.lead {
    =============================== */
 
 .section-founders {
-  background-color: hsl(var(--muted) / 0.3);
+  background-color: var(--background);
 }
 
 .founders-grid {
@@ -961,11 +994,11 @@ p.lead {
   margin: 0 0 0.75rem;
   font-size: 0.9rem;
   font-weight: 600;
-  color: hsl(var(--secondary));
+  color: var(--secondary);
 }
 
 .section-team {
-  background-color: #fbfcfd;
+  background-color: var(--background);
 }
 
 .team-grid {
@@ -995,16 +1028,13 @@ p.lead {
 .team-role {
   margin: 0;
   font-size: 0.9rem;
-  color: hsl(var(--muted-foreground));
+  color: var(--muted-foreground);
 }
-p.team-role {color:#f8f8f8};
+p.team-role {
+  color: var(--secondary);
 }
 
 @media (min-width: 768px) {
-  .founders-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .team-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1018,14 +1048,17 @@ p.team-role {color:#f8f8f8};
 /* === About page tweaks: square photos + centered single founder === */
 
 /* Center the founders row even when there is only one card */
-.founders-grid {
+.section-founders .founders-grid {
   display: flex;
   justify-content: center;
   gap: 1.75rem;
-  margin-top: 2rem;
-  max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .section-founders .founders-grid {
+    display: grid; /* Revert to grid for 2 columns */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Square photos for founder + team cards */
@@ -1040,4 +1073,4 @@ p.team-role {color:#f8f8f8};
 }
 .founder-photo{
   height:19.5rem
-  }
+}
