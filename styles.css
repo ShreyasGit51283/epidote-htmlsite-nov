@@ -6,7 +6,7 @@
   --background: #0f0f0f;
   --foreground: #ffffff;
 
-  --card: #28384a;
+  --card: #141414;
   --card-foreground: #ffffff;
 
   --popover: #1b2633;
@@ -19,7 +19,7 @@
   --secondary-foreground: #ffffff;
 
   --muted: #2d3e50;
-  --muted-foreground: #c6c6c6;
+  --muted-foreground: #dedede;
 
   --accent: #e87a90;
   --accent-foreground: #ffffff;
@@ -168,6 +168,12 @@ p.lead {
   line-height: 1.7;
 }
 
+
+i.fa-brands{
+  font-size: 2rem;
+  margin:16px;
+}
+
 /* ==== Class-based helpers now only handle color / layout, NOT font-size ==== */
 
 /* Gradient accent stays as-is */
@@ -273,13 +279,13 @@ p.lead {
   margin-left: auto;
 }
 
-.nav-link.active {
+.nav-links .nav-link.active {
   font-weight:600;
   text-decoration: underline;
   text-decoration-thickness: 1px;          /* thinner underline */
   text-underline-offset: 4px;              /* nice spacing */
-  text-decoration-color: var(--foreground);
-  color: var(--foreground);           /* make selected text dark */
+  text-decoration-color: var(--primary);
+  color: var(--primary);           /* make selected text a primary color */
 }
 
 
@@ -564,8 +570,7 @@ p.lead {
 
 .section-vaccine {
   background-color: var(--background);
-  border-top: 1px solid #36485ab3;
-  border-bottom: 1px solid #36485ab3;
+ 
 }
 
 .vaccine-inner {
@@ -623,7 +628,7 @@ p.lead {
    =============================== */
 
 .section-contact {
-  background-color: var(--background);
+  background: var(--gradient-accent);
 }
 
 .contact-action {
@@ -1073,4 +1078,33 @@ p.team-role {
 }
 .founder-photo{
   height:19.5rem
+}
+
+/* ===============================
+   Split Layout
+   =============================== */
+
+.split-layout {
+  display: flex;
+  align-items: center;
+  gap: 3rem; /* Adjust gap between columns */
+}
+
+.split-layout-content,
+.split-layout-media {
+  flex: 1; /* Each column takes up equal space */
+}
+
+.split-layout-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Responsive adjustments for the split layout */
+@media (max-width: 768px) {
+  .split-layout {
+    flex-direction: column; /* Stack columns on top of each other */
+    text-align: center;
+  }
 }
