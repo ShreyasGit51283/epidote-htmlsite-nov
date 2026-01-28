@@ -39,8 +39,8 @@
     var(--secondary) 100%
   );
   --gradient-hero: linear-gradient(
-    90deg, /* left-to-right */
-    var(--background) 0%,
+    90deg,
+    /* left-to-right */ var(--background) 0%,
     #1f1f1f 100% /* slightly lighter dark grey */
   );
   --gradient-accent: linear-gradient(
@@ -49,12 +49,25 @@
     hsl(203 48% 22%) 100%
   );
 
-  --shadow-soft: 0 1px 3px #0000000a,
-    0 1px 2px #00000008;
-  --shadow-medium: 0 4px 6px #0000000a,
-    0 2px 4px #00000008;
-  --shadow-large: 0 10px 15px #0000000d,
-    0 4px 6px #0000000a;
+  --shadow-soft: 0 1px 3px #0000000a, 0 1px 2px #00000008;
+  --shadow-medium: 0 4px 6px #0000000a, 0 2px 4px #00000008;
+  --shadow-large: 0 10px 15px #0000000d, 0 4px 6px #0000000a;
+}
+
+/* Animation definitions */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes gradient-rotate {
+  0% {
+    --gradient-angle: 0deg;
+  }
+  100% {
+    --gradient-angle: 360deg;
+  }
 }
 
 /* ===============================
@@ -74,7 +87,6 @@ html {
 * {
   font-family: "Open Sans", Arial, sans-serif;
 }
-
 
 body {
   margin: 0;
@@ -107,6 +119,8 @@ a {
 
 .section {
   padding: 5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .text-center {
@@ -155,7 +169,7 @@ h4 {
 
 /* Body text */
 p {
-  font-size: 1.2rem;             /* base text size */
+  font-size: 1.2rem; /* base text size */
   font-weight: 400;
   line-height: 1.7;
   color: var(--muted-foreground);
@@ -168,29 +182,38 @@ p.lead {
   line-height: 1.7;
 }
 
-
-i.fa-brands{
+i.fa-brands {
   font-size: 2rem;
-  margin:16px;
+  margin: 16px;
 }
 
 /* ==== Class-based helpers now only handle color / layout, NOT font-size ==== */
 
 /* Gradient accent stays as-is */
 .hero-title-accent {
-  background: linear-gradient(90deg, #23E0D8,#23E0D8, #FF2369,#ed1c25);
+  background: linear-gradient(90deg, #23e0d8, #23e0d8, #ff2369, #ed1c25);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .our-offerings {
-    border: 1px solid #c86666;
-    padding: .5rem;
-    display: inline-block;
-    border-radius: 42px;
-    margin: 2rem;
-    background: #0f0f0f;
+  border: 2px solid transparent;
+  padding: 0.5rem;
+  display: inline-block;
+  border-radius: 42px;
+  margin: 2rem;
+  background:
+    linear-gradient(var(--background), var(--background)) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      )
+      border-box;
+  animation: gradient-rotate 3s linear infinite;
 }
 /* If your hero text is <h1 class="hero-title">, this just keeps margin behavior */
 .hero-title {
@@ -215,14 +238,14 @@ i.fa-brands{
   max-width: 65rem;
   margin: 0 auto;
   font-size: 1.8rem;
-  font-weight:100;
+  font-weight: 100;
 }
 .section-intro-small {
   color: var(--muted-foreground);
   max-width: 65rem;
   margin: 2rem auto;
   font-size: 1.3rem;
-  font-weight:100;
+  font-weight: 400;
 }
 
 /* Feature title – margin only, h3 controls typography */
@@ -235,7 +258,6 @@ i.fa-brands{
   color: var(--muted-foreground);
   margin: 0;
 }
-
 
 /* ===============================
    Header / Navigation
@@ -280,14 +302,13 @@ i.fa-brands{
 }
 
 .nav-links .nav-link.active {
-  font-weight:600;
+  font-weight: 600;
   text-decoration: underline;
-  text-decoration-thickness: 1px;          /* thinner underline */
-  text-underline-offset: 4px;              /* nice spacing */
+  text-decoration-thickness: 1px; /* thinner underline */
+  text-underline-offset: 4px; /* nice spacing */
   text-decoration-color: var(--primary);
-  color: var(--primary);           /* make selected text a primary color */
+  color: var(--primary); /* make selected text a primary color */
 }
-
 
 /* MOBILE: burger right */
 .nav-toggle {
@@ -311,8 +332,6 @@ i.fa-brands{
     display: none;
   }
 }
-
-
 
 /* ===============================
    Buttons
@@ -343,8 +362,19 @@ i.fa-brands{
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
-  color: #fff;
+  border: 2px solid transparent;
+  background:
+    var(--gradient-primary) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      )
+      border-box;
+  animation: gradient-rotate 3s linear infinite;
+  color: var(--background);
   box-shadow: var(--shadow-medium);
 }
 
@@ -354,15 +384,33 @@ i.fa-brands{
 }
 
 .btn-outline {
-  background-color: transparent;
-  border-color: var(--border);
+  border: 2px solid transparent;
   color: var(--foreground);
+  background:
+    linear-gradient(var(--background), var(--background)) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      )
+      border-box;
+  animation: gradient-rotate 3s linear infinite;
 }
 
 .btn-outline:hover {
-  background-color: #ffffff1a;
+  background:
+    linear-gradient(#272727, #272727) padding-box,
+    conic-gradient(
+        from var(--gradient-angle),
+        var(--primary),
+        var(--secondary),
+        var(--accent),
+        var(--primary)
+      )
+      border-box;
   color: #fff;
-  border-color: transparent;
   box-shadow: var(--shadow-medium);
 }
 
@@ -375,7 +423,6 @@ i.fa-brands{
    =============================== */
 
 .hero {
-  background: var(--gradient-hero);
 }
 
 .hero-inner {
@@ -388,8 +435,8 @@ i.fa-brands{
 /* Hero image wrapper – matches React size but stays responsive */
 .hero-media {
   margin: 4rem 0;
-  max-width: 56rem;   /* 56rem × 16px ≈ 896px → matches your 894px */
-  width: 100%;        /* let it shrink on smaller screens */
+  max-width: 56rem; /* 56rem × 16px ≈ 896px → matches your 894px */
+  width: 100%; /* let it shrink on smaller screens */
 }
 
 /* Make sure the card takes full width of that wrapper */
@@ -398,7 +445,7 @@ i.fa-brands{
   border-radius: 1.75rem;
   aspect-ratio: 16 / 9;
   width: 100%;
-  margin-top:30px;
+  margin-top: 30px;
 }
 
 /* Image already good, but for clarity: */
@@ -447,7 +494,6 @@ i.fa-brands{
    =============================== */
 
 .section-product {
-  background-color: var(--background);
 }
 
 .section-header {
@@ -469,11 +515,7 @@ i.fa-brands{
   padding: 0.6rem 1.4rem;
   border-radius: 999px;
   border: 1px solid #33cccc33;
-  background: linear-gradient(
-    90deg,
-    #33cccc14,
-    #33cccc08
-  );
+  background: linear-gradient(90deg, #33cccc14, #33cccc08);
   box-shadow: var(--shadow-soft);
   font-size: 0.9rem;
   color: var(--secondary);
@@ -533,7 +575,6 @@ i.fa-brands{
    =============================== */
 
 .section-features {
-  background-color: var(--background);
 }
 
 .features-grid {
@@ -569,8 +610,6 @@ i.fa-brands{
    =============================== */
 
 .section-vaccine {
-  background-color: var(--background);
- 
 }
 
 .vaccine-inner {
@@ -599,7 +638,6 @@ i.fa-brands{
    =============================== */
 
 .section-customers {
-  background-color: var(--background);
 }
 
 .customers-grid {
@@ -845,7 +883,6 @@ i.fa-brands{
    =============================== */
 
 .section-success {
-  background-color: var(--background);
 }
 
 .success-grid {
@@ -909,7 +946,6 @@ i.fa-brands{
    =============================== */
 
 .section-milestones {
-  background-color: var(--background);
 }
 
 .milestones-list {
@@ -965,7 +1001,11 @@ i.fa-brands{
    =============================== */
 
 .section-founders {
-  background-color: var(--background);
+  background: var(--gradient-hero);
+  padding: 2rem;
+}
+.section-team {
+  padding: 3rem;
 }
 
 .founders-grid {
@@ -1003,7 +1043,6 @@ i.fa-brands{
 }
 
 .section-team {
-  background-color: var(--background);
 }
 
 .team-grid {
@@ -1069,15 +1108,15 @@ p.team-role {
 /* Square photos for founder + team cards */
 .founder-photo,
 .team-photo {
-  width: 14.5rem;     /* adjust if you want bigger/smaller */
-  height: 13.5rem;    /* same as width -> perfect square */
+  width: 14.5rem; /* adjust if you want bigger/smaller */
+  height: 13.5rem; /* same as width -> perfect square */
   object-fit: cover;
-  border-radius: 1rem;  /* rounded-square; use 0 for sharp corners */
+  border-radius: 1rem; /* rounded-square; use 0 for sharp corners */
   display: block;
   margin: 0 auto 1.25rem;
 }
-.founder-photo{
-  height:19.5rem
+.founder-photo {
+  height: 19.5rem;
 }
 
 /* ===============================
@@ -1107,4 +1146,173 @@ p.team-role {
     flex-direction: column; /* Stack columns on top of each other */
     text-align: center;
   }
+}
+
+/* ===============================
+   DNA Animation
+   =============================== */
+
+.dna-bg-streamer {
+  position: fixed;
+  top: 0;
+  left: 15rem;
+  transform: rotate(0deg);
+  width: 120px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .dna-bg-streamer {
+    display: none;
+  }
+}
+
+.pair {
+  position: relative;
+  width: 100%;
+  height: 10px;
+}
+
+/* The connecting rung */
+.pair::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  background: var(--secondary);
+  transform: translateY(-50%);
+  animation: twist-line 3s infinite ease-in-out;
+}
+
+.dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 5px #ed1c25) drop-shadow(0 0 10px #ed1c25);
+}
+
+.dot.a {
+  background: #ed1c25;
+  animation: twist-a 3s infinite ease-in-out;
+}
+
+.dot.b {
+  background: #ff2369;
+  animation: twist-b 3s infinite ease-in-out;
+}
+
+@keyframes twist-a {
+  0%,
+  100% {
+    left: 0%;
+    transform: scale(1.4);
+    z-index: 2;
+    opacity: 1;
+  }
+  50% {
+    left: 100%;
+    transform: scale(0.6);
+    z-index: 1;
+    opacity: 0.4;
+  }
+}
+
+@keyframes twist-b {
+  0%,
+  100% {
+    left: 100%;
+    transform: scale(0.6);
+    z-index: 1;
+    opacity: 0.4;
+  }
+  50% {
+    left: 0%;
+    transform: scale(1.4);
+    z-index: 2;
+    opacity: 1;
+  }
+}
+
+@keyframes twist-line {
+  0% {
+    left: 0;
+    width: 100%;
+    opacity: 0.3;
+  }
+  25% {
+    left: 50%;
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    left: 0;
+    width: 100%;
+    opacity: 0.3;
+  }
+  75% {
+    left: 50%;
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    width: 100%;
+    opacity: 0.3;
+  }
+}
+
+.pair:nth-child(1) .dot,
+.pair:nth-child(1)::before {
+  animation-delay: -0.2s;
+}
+.pair:nth-child(2) .dot,
+.pair:nth-child(2)::before {
+  animation-delay: -0.4s;
+}
+.pair:nth-child(3) .dot,
+.pair:nth-child(3)::before {
+  animation-delay: -0.6s;
+}
+.pair:nth-child(4) .dot,
+.pair:nth-child(4)::before {
+  animation-delay: -0.8s;
+}
+.pair:nth-child(5) .dot,
+.pair:nth-child(5)::before {
+  animation-delay: -1s;
+}
+.pair:nth-child(6) .dot,
+.pair:nth-child(6)::before {
+  animation-delay: -1.2s;
+}
+.pair:nth-child(7) .dot,
+.pair:nth-child(7)::before {
+  animation-delay: -1.4s;
+}
+.pair:nth-child(8) .dot,
+.pair:nth-child(8)::before {
+  animation-delay: -1.6s;
+}
+.pair:nth-child(9) .dot,
+.pair:nth-child(9)::before {
+  animation-delay: -1.8s;
+}
+.pair:nth-child(10) .dot,
+.pair:nth-child(10)::before {
+  animation-delay: -2s;
+}
+.pair:nth-child(11) .dot,
+.pair:nth-child(11)::before {
+  animation-delay: -2.2s;
+}
+.pair:nth-child(12) .dot,
+.pair:nth-child(12)::before {
+  animation-delay: -2.4s;
 }
