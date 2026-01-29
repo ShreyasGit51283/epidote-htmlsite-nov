@@ -118,7 +118,7 @@ a {
 }
 
 .section {
-  padding: 5rem 0;
+  padding: 3rem 0;
   position: relative;
   z-index: 1;
 }
@@ -135,7 +135,7 @@ a {
 
 /* Hero-sized main heading */
 h1 {
-  font-size: clamp(5rem, 4vw, 3.9rem);
+  font-size: clamp(3.9rem, 4vw, 5rem);
   line-height: 1.05;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -149,6 +149,7 @@ h2 {
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin: 0 0 1rem;
+  color: #23e0d8;
 }
 
 /* Feature block titles ("Precision Detection" etc.) */
@@ -456,7 +457,7 @@ i.fa-brands {
 }
 
 .hero-action {
-  margin-top: 2rem;
+  margin-top: 3.2rem;
 }
 
 /* ===============================
@@ -774,21 +775,8 @@ i.fa-brands {
 /* ---------- Founders section ---------- */
 
 .founder-card {
-  background-color: var(--card);
-  border-radius: 1.5rem;
-  border: 1px solid #36485a80;
-  box-shadow: var(--shadow-soft);
   padding: 2rem 1.75rem 1.75rem;
   text-align: center;
-}
-
-.founder-photo {
-  width: 100%;
-  max-width: 230px;
-  margin: 0 auto 1.25rem;
-  aspect-ratio: 3 / 4;
-  border-radius: 1.25rem;
-  object-fit: cover;
 }
 
 .founder-name {
@@ -824,21 +812,8 @@ i.fa-brands {
 }
 
 .team-card {
-  background-color: var(--card);
-  border-radius: 1.5rem;
-  border: 1px solid #36485a80;
-  box-shadow: var(--shadow-soft);
   padding: 1.75rem 1.5rem 1.5rem;
   text-align: center;
-}
-
-.team-photo {
-  width: 100%;
-  max-width: 210px;
-  margin: 0 auto 1rem;
-  aspect-ratio: 3 / 4;
-  border-radius: 1.25rem;
-  object-fit: cover;
 }
 
 .team-name {
@@ -963,20 +938,67 @@ i.fa-brands {
 }
 
 .milestone-icon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-shrink: 0;
 }
 
-.milestone-icon-inner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 999px;
-  background: var(--gradient-primary);
-  box-shadow: var(--shadow-medium);
-  font-size: 1.4rem;
-  color: #fff;
+.ms-shape-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  fill: rgba(0, 242, 255, 0.02);
+  stroke: #144b6e;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 5px rgba(0, 242, 255, 0.5));
+}
+
+.ms-dna-core {
+  position: relative;
+  width: 28px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ms-pair {
+  position: relative;
+  width: 100%;
+  height: 1px;
+}
+
+.ms-rung {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, #00f2ff, #008c95);
+  transform: translate(-50%, -50%);
+  animation: ms-rung-twist 2.5s infinite ease-in-out;
+  opacity: 0.3;
+}
+
+.ms-dot {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  top: -0.5px;
+}
+
+.ms-dot.a {
+  animation: ms-twist-a 2.5s infinite ease-in-out;
+  box-shadow: 0 0 4px #00f2ff;
+}
+.ms-dot.b {
+  animation: ms-twist-b 2.5s infinite ease-in-out;
+  box-shadow: 0 0 4px #008c95;
 }
 
 .milestone-content {
@@ -996,16 +1018,214 @@ i.fa-brands {
   margin: 0 0 0.3rem;
 }
 
+@keyframes ms-twist-a {
+  0%,
+  100% {
+    left: 0%;
+    transform: scale(1.2);
+    z-index: 2;
+  }
+  50% {
+    left: 100%;
+    transform: scale(0.8);
+    z-index: 1;
+    opacity: 0.4;
+  }
+}
+
+@keyframes ms-twist-b {
+  0%,
+  100% {
+    left: 100%;
+    transform: scale(0.8);
+    z-index: 1;
+    opacity: 0.4;
+  }
+  50% {
+    left: 0%;
+    transform: scale(1.2);
+    z-index: 2;
+  }
+}
+
+@keyframes ms-rung-twist {
+  0%,
+  50%,
+  100% {
+    width: 100%;
+  }
+  25%,
+  75% {
+    width: 0%;
+  }
+}
+
+.ms-pair.p1 .ms-dot,
+.ms-pair.p1 .ms-rung {
+  animation-delay: 0s;
+}
+.ms-pair.p2 .ms-dot,
+.ms-pair.p2 .ms-rung {
+  animation-delay: -0.4s;
+}
+.ms-pair.p3 .ms-dot,
+.ms-pair.p3 .ms-rung {
+  animation-delay: -0.8s;
+}
+.ms-pair.p4 .ms-dot,
+.ms-pair.p4 .ms-rung {
+  animation-delay: -1.2s;
+}
+.ms-pair.p5 .ms-dot,
+.ms-pair.p5 .ms-rung {
+  animation-delay: -1.6s;
+}
+.ms-pair.p6 .ms-dot,
+.ms-pair.p6 .ms-rung {
+  animation-delay: -2s;
+}
+
+/* ===============================
+   AMR Milestone Icon
+   =============================== */
+
+.ms-scanner-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ms-microbe {
+  width: 10px;
+  height: 20px;
+  border: 1.5px solid #ffffff;
+  border-radius: 10px;
+  position: relative;
+  animation: float-microbe 3s infinite ease-in-out;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.ms-scan-line {
+  position: absolute;
+  width: 120%;
+  height: 1.5px;
+  background: #00f2ff;
+  box-shadow:
+    0 0 8px #00f2ff,
+    0 0 15px #00f2ff;
+  z-index: 10;
+  animation: laser-move 2s infinite linear;
+}
+
+.ms-particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00f2ff;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: data-pulse 1.5s infinite;
+}
+.ms-particle.p1 {
+  top: 15%;
+  left: 15%;
+}
+.ms-particle.p2 {
+  bottom: 15%;
+  right: 15%;
+  animation-delay: 0.7s;
+}
+
+@keyframes float-microbe {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(8deg);
+  }
+}
+
+@keyframes laser-move {
+  0% {
+    top: -10%;
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes data-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.8);
+    opacity: 0.8;
+  }
+}
+
+@media (max-width: 600px) {
+  .milestone-icon {
+    transform: scale(0.85);
+  }
+}
+
+/* ===============================
+   Equity Milestone Icon
+   =============================== */
+
+.ms-coin-flat {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #00f2ff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  color: #00f2ff;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+  text-shadow: 0 0 8px #00f2ff;
+  animation: ms-flip-flat 4s linear infinite;
+}
+
+@keyframes ms-flip-flat {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 /* ===============================
    Founders & Team cards
    =============================== */
 
 .section-founders {
   background: var(--gradient-hero);
-  padding: 2rem;
 }
 .section-team {
-  padding: 3rem;
 }
 
 .founders-grid {
@@ -1021,14 +1241,6 @@ i.fa-brands {
 .founder-card {
   padding: 1.75rem 1.75rem 2rem;
   text-align: center;
-}
-
-.founder-photo {
-  width: 9rem;
-  height: 9rem;
-  border-radius: 999px;
-  object-fit: cover;
-  margin: 0 auto 1.25rem;
 }
 
 .founder-name {
@@ -1055,14 +1267,6 @@ i.fa-brands {
 .team-card {
   padding: 1.5rem;
   text-align: center;
-}
-
-.team-photo {
-  width: 8rem;
-  height: 8rem;
-  border-radius: 999px;
-  object-fit: cover;
-  margin: 0 auto 1rem;
 }
 
 .team-name {
@@ -1106,17 +1310,27 @@ p.team-role {
 }
 
 /* Square photos for founder + team cards */
-.founder-photo,
-.team-photo {
-  width: 14.5rem; /* adjust if you want bigger/smaller */
-  height: 13.5rem; /* same as width -> perfect square */
-  object-fit: cover;
-  border-radius: 1rem; /* rounded-square; use 0 for sharp corners */
-  display: block;
+.profile-wrapper {
+  border-radius: 50%;
+  padding: 3px;
+  background: linear-gradient(90deg, #23e0d8, #23e0d8, #ff2369, #ed1c25);
   margin: 0 auto 1.25rem;
 }
-.founder-photo {
-  height: 19.5rem;
+.founder-card .profile-wrapper {
+  width: 11.6rem;
+  height: 11.6rem;
+}
+.team-card .profile-wrapper {
+  width: 8rem;
+  height: 8rem;
+}
+
+.profile-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 /* ===============================
@@ -1155,7 +1369,7 @@ p.team-role {
 .dna-bg-streamer {
   position: fixed;
   top: 0;
-  left: 15rem;
+  left: 8rem;
   transform: rotate(0deg);
   width: 120px;
   height: 100vh;
@@ -1163,8 +1377,10 @@ p.team-role {
   flex-direction: column;
   justify-content: space-around;
   z-index: 0;
-  opacity: 0.6;
+  opacity: 0.9;
   pointer-events: none;
+  animation: dna-zoom-out linear;
+  animation-timeline: scroll();
 }
 
 @media (max-width: 1024px) {
@@ -1179,7 +1395,7 @@ p.team-role {
   height: 10px;
 }
 
-/* The connecting rung */
+/* The connecting rung 
 .pair::before {
   content: "";
   position: absolute;
@@ -1187,25 +1403,27 @@ p.team-role {
   height: 2px;
   background: var(--secondary);
   transform: translateY(-50%);
-  animation: twist-line 3s infinite ease-in-out;
-}
+  animation: twist-line 6s infinite ease-in-out;
+}*/
 
 .dot {
   position: absolute;
-  width: 8px;
-  height: 8px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   filter: drop-shadow(0 0 5px #ed1c25) drop-shadow(0 0 10px #ed1c25);
 }
 
 .dot.a {
-  background: #ed1c25;
-  animation: twist-a 3s infinite ease-in-out;
+  background: linear-gradient(135deg, #23e0d8, #ff2369);
+  filter: drop-shadow(0 0 5px #23e0d8);
+  animation: twist-a 6s infinite ease-in-out;
 }
 
 .dot.b {
-  background: #ff2369;
-  animation: twist-b 3s infinite ease-in-out;
+  background: linear-gradient(135deg, #ff2369, #23e0d8);
+  filter: drop-shadow(0 0 5px #ff2369);
+  animation: twist-b 6s infinite ease-in-out;
 }
 
 @keyframes twist-a {
@@ -1270,49 +1488,88 @@ p.team-role {
 
 .pair:nth-child(1) .dot,
 .pair:nth-child(1)::before {
-  animation-delay: -0.2s;
+  animation-delay: -0.4s;
 }
 .pair:nth-child(2) .dot,
 .pair:nth-child(2)::before {
-  animation-delay: -0.4s;
+  animation-delay: -0.8s;
 }
 .pair:nth-child(3) .dot,
 .pair:nth-child(3)::before {
-  animation-delay: -0.6s;
+  animation-delay: -1.2s;
 }
 .pair:nth-child(4) .dot,
 .pair:nth-child(4)::before {
-  animation-delay: -0.8s;
+  animation-delay: -1.6s;
 }
 .pair:nth-child(5) .dot,
 .pair:nth-child(5)::before {
-  animation-delay: -1s;
+  animation-delay: -2s;
 }
 .pair:nth-child(6) .dot,
 .pair:nth-child(6)::before {
-  animation-delay: -1.2s;
+  animation-delay: -2.4s;
 }
 .pair:nth-child(7) .dot,
 .pair:nth-child(7)::before {
-  animation-delay: -1.4s;
+  animation-delay: -2.8s;
 }
 .pair:nth-child(8) .dot,
 .pair:nth-child(8)::before {
-  animation-delay: -1.6s;
+  animation-delay: -3.2s;
 }
 .pair:nth-child(9) .dot,
 .pair:nth-child(9)::before {
-  animation-delay: -1.8s;
+  animation-delay: -3.6s;
 }
 .pair:nth-child(10) .dot,
 .pair:nth-child(10)::before {
-  animation-delay: -2s;
+  animation-delay: -4s;
 }
 .pair:nth-child(11) .dot,
 .pair:nth-child(11)::before {
-  animation-delay: -2.2s;
+  animation-delay: -4.4s;
 }
 .pair:nth-child(12) .dot,
 .pair:nth-child(12)::before {
-  animation-delay: -2.4s;
+  animation-delay: -4.8s;
+}
+.pair:nth-child(13) .dot,
+.pair:nth-child(13)::before {
+  animation-delay: -5.2s;
+}
+.pair:nth-child(14) .dot,
+.pair:nth-child(14)::before {
+  animation-delay: -5.6s;
+}
+.pair:nth-child(15) .dot,
+.pair:nth-child(15)::before {
+  animation-delay: -6s;
+}
+.pair:nth-child(16) .dot,
+.pair:nth-child(16)::before {
+  animation-delay: -6.4s;
+}
+.pair:nth-child(17) .dot,
+.pair:nth-child(17)::before {
+  animation-delay: -6.8s;
+}
+.pair:nth-child(18) .dot,
+.pair:nth-child(18)::before {
+  animation-delay: -7.2s;
+}
+.pair:nth-child(19) .dot,
+.pair:nth-child(19)::before {
+  animation-delay: -7.6s;
+}
+.pair:nth-child(20) .dot,
+.pair:nth-child(20)::before {
+  animation-delay: -8s;
+}
+
+@keyframes dna-zoom-out {
+  to {
+    transform: rotate(0deg) scale(0.7);
+    opacity: 0.3;
+  }
 }
