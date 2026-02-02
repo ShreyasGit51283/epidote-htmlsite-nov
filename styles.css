@@ -314,6 +314,13 @@ i.fa-brands {
 /* MOBILE: burger right */
 .nav-toggle {
   margin-left: auto;
+  background: transparent;
+  border: none;
+  color: var(--secondary);
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  line-height: 1;
 }
 
 /* MAKE HEADER FULL-WIDTH (IMPORTANT) */
@@ -322,6 +329,25 @@ i.fa-brands {
   margin: 0;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
+}
+
+/* Mobile menu styles */
+@media (max-width: 767px) {
+  .nav-links.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--background);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-medium);
+  }
+  .nav-links.active .nav-cta {
+    width: 100%;
+  }
 }
 
 /* Desktop breakpoint */
@@ -1348,7 +1374,9 @@ i.fa-brands {
 
 @media (max-width: 1024px) {
   .dna-bg-streamer {
-    display: none;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0.4;
   }
 }
 
