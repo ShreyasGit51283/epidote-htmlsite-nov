@@ -1320,11 +1320,12 @@ i.fa-brands {
 
 .dna-bg-streamer {
   position: fixed;
-  top: 0;
-  left: 8rem;
-  transform: rotate(0deg);
+  top: -50vh;
+  left: 33rem;
+  --dna-rotation: 45deg;
+  transform: rotate(var(--dna-rotation, 0deg));
   width: 120px;
-  height: 100vh;
+  height: 200vh;
   z-index: 0;
   opacity: 1;
   pointer-events: none;
@@ -1528,10 +1529,90 @@ i.fa-brands {
 .pair:nth-child(20)::before {
   animation-delay: -8s;
 }
+.pair:nth-child(21) .dot,
+.pair:nth-child(21)::before {
+  animation-delay: -8.4s;
+}
+.pair:nth-child(22) .dot,
+.pair:nth-child(22)::before {
+  animation-delay: -8.8s;
+}
+.pair:nth-child(23) .dot,
+.pair:nth-child(23)::before {
+  animation-delay: -9.2s;
+}
+.pair:nth-child(24) .dot,
+.pair:nth-child(24)::before {
+  animation-delay: -9.6s;
+}
+.pair:nth-child(25) .dot,
+.pair:nth-child(25)::before {
+  animation-delay: -10s;
+}
+.pair:nth-child(26) .dot,
+.pair:nth-child(26)::before {
+  animation-delay: -10.4s;
+}
+.pair:nth-child(27) .dot,
+.pair:nth-child(27)::before {
+  animation-delay: -10.8s;
+}
+.pair:nth-child(28) .dot,
+.pair:nth-child(28)::before {
+  animation-delay: -11.2s;
+}
+.pair:nth-child(29) .dot,
+.pair:nth-child(29)::before {
+  animation-delay: -11.6s;
+}
+.pair:nth-child(30) .dot,
+.pair:nth-child(30)::before {
+  animation-delay: -12s;
+}
+.pair:nth-child(31) .dot,
+.pair:nth-child(31)::before {
+  animation-delay: -12.4s;
+}
+.pair:nth-child(32) .dot,
+.pair:nth-child(32)::before {
+  animation-delay: -12.8s;
+}
+.pair:nth-child(33) .dot,
+.pair:nth-child(33)::before {
+  animation-delay: -13.2s;
+}
+.pair:nth-child(34) .dot,
+.pair:nth-child(34)::before {
+  animation-delay: -13.6s;
+}
+.pair:nth-child(35) .dot,
+.pair:nth-child(35)::before {
+  animation-delay: -14s;
+}
+.pair:nth-child(36) .dot,
+.pair:nth-child(36)::before {
+  animation-delay: -14.4s;
+}
+.pair:nth-child(37) .dot,
+.pair:nth-child(37)::before {
+  animation-delay: -14.8s;
+}
+.pair:nth-child(38) .dot,
+.pair:nth-child(38)::before {
+  animation-delay: -15.2s;
+}
+.pair:nth-child(39) .dot,
+.pair:nth-child(39)::before {
+  animation-delay: -15.6s;
+}
+.pair:nth-child(40) .dot,
+.pair:nth-child(40)::before {
+  animation-delay: -16s;
+}
 
 @keyframes dna-zoom-out {
   to {
-    transform: rotate(0deg) scale(0.7);
+    transform: rotate(var(--dna-rotation, 0deg)) scale(0.7);
     opacity: 0.1;
   }
 }
