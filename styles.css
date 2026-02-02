@@ -95,6 +95,7 @@ body {
   color: var(--foreground);
   -webkit-font-smoothing: antialiased;
   padding-top: 80px; /* for fixed header */
+  overflow-x: hidden;
 }
 
 img {
@@ -1377,6 +1378,16 @@ i.fa-brands {
     left: 50%;
     margin-left: -60px;
     opacity: 0.4;
+  }
+}
+
+@media (max-width: 768px) {
+  .dna-bg-streamer {
+    animation: none;
+  }
+  .dot.a,
+  .dot.b {
+    animation-play-state: paused;
   }
 }
 
