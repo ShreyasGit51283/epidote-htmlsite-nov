@@ -118,6 +118,15 @@ a {
   padding: 0 1.5rem;
 }
 
+@media (min-width: 1024px) {
+  .container {
+    max-width: 70vw;
+  }
+  .hero .container {
+    max-width: 90vw;
+  }
+}
+
 .section {
   padding: 3rem 0;
   position: relative;
@@ -223,13 +232,6 @@ i.fa-brands {
   margin: 0 0 2rem;
 }
 
-/* Hero lead paragraph – layout & color only, font-size from p / p.lead */
-.hero-lead {
-  color: var(--muted-foreground);
-  max-width: 38rem;
-  margin: 0 auto 2.5rem;
-}
-
 /* Section title class – margin only, h2 controls typography */
 .section-title {
   margin: 0 0 1rem;
@@ -243,12 +245,23 @@ i.fa-brands {
   font-size: 1.8rem;
   font-weight: 600;
 }
+
+.section-intro-large.intro-left {
+  text-align: left;
+  margin: 0 0 1rem 0;
+}
+
 .section-intro-small {
   color: var(--muted-foreground);
   max-width: 65rem;
   margin: 2rem auto;
   font-size: 1.3rem;
   font-weight: 400;
+}
+
+.section-intro-small.intro-left {
+  text-align: left;
+  margin: 1rem 0 2rem 0;
 }
 
 /* Feature title – margin only, h3 controls typography */
@@ -451,26 +464,50 @@ i.fa-brands {
    =============================== */
 
 .hero-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  animation: fadeInUp 0.6s ease-out;
+  display: flex;
+  align-items: flex-start;
+  gap: 5rem;
+}
+
+.hero-inner.hero-single {
+  display: block;
+  text-align: center;
   max-width: 60rem;
   margin: 0 auto;
-  text-align: center;
-  animation: fadeInUp 0.6s ease-out;
+}
+
+.hero-text-content {
+  flex: 1;
 }
 
 /* Hero image wrapper – matches React size but stays responsive */
 .hero-media {
-  margin: 4rem 0;
-  max-width: 56rem; /* 56rem × 16px ≈ 896px → matches your 894px */
+  margin: 0;
+  max-width: 100%;
   width: 100%; /* let it shrink on smaller screens */
+  flex: 1.4;
+}
+
+.about-hero-image {
+  margin: 3rem auto 0;
+  max-width: 56rem;
+  flex: none;
 }
 
 /* Make sure the card takes full width of that wrapper */
 .card-hero {
   overflow: hidden;
-  border-radius: 1.75rem;
+  border-radius: 1.1rem;
   aspect-ratio: 16 / 9;
   width: 100%;
-  margin-top: 30px;
+  margin-top: 0;
+  border: 3px solid #23e0d8;
+  padding: 2px;
+  box-shadow: 0 0 15px #23e0d8;
 }
 
 /* Image already good, but for clarity: */
@@ -481,7 +518,18 @@ i.fa-brands {
 }
 
 .hero-action {
-  margin-top: 3.2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .hero-media {
+    margin-top: 2rem;
+  }
 }
 
 /* ===============================
@@ -494,12 +542,6 @@ i.fa-brands {
   border-radius: 1.5rem;
   border: 1px solid #36485a80;
   box-shadow: var(--shadow-soft);
-}
-
-.card-image {
-  overflow: hidden;
-  border-radius: 1.75rem;
-  aspect-ratio: 4 / 3;
 }
 
 .card-image img {
@@ -520,26 +562,8 @@ i.fa-brands {
   margin-bottom: 2.5rem;
 }
 
-.pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.9rem;
-  margin: 2.5rem 0 3.5rem;
-}
-
-.pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.4rem;
-  border-radius: 999px;
-  border: 1px solid #33cccc33;
-  background: linear-gradient(90deg, #33cccc14, #33cccc08);
-  box-shadow: var(--shadow-soft);
-  font-size: 0.9rem;
-  color: var(--secondary);
-  font-weight: 500;
+.our-offerings.compact {
+  margin: 0 0 1.5rem 0;
 }
 
 .pill-icon {
@@ -590,6 +614,19 @@ i.fa-brands {
   text-align: left;
 }
 
+.feature-card.centered-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.features-grid.vertical {
+  grid-template-columns: 1fr;
+  margin-top: 0;
+  width: 100%;
+}
+
 .feature-card .feature-icon-circle {
   margin-bottom: 1.5rem; /* More space in card */
 }
@@ -609,46 +646,6 @@ i.fa-brands {
   max-width: 48rem;
   margin: 0 auto;
   text-align: center;
-}
-
-.vaccine-card {
-  margin: 2.5rem auto 0;
-  max-width: 40rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  aspect-ratio: 16 / 9;
-  background-color: var(--muted);
-}
-
-.vaccine-placeholder {
-  color: var(--muted-foreground);
-  font-size: 0.95rem;
-}
-
-/* ===============================
-   Customers
-   =============================== */
-
-.customers-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-  justify-items: center;
-}
-
-.customer-logo img {
-  max-height: 5rem;
-  width: auto;
-  opacity: 0.6;
-  filter: grayscale(1) brightness(1.5);
-  transition: all 0.18s ease;
-}
-
-.customer-logo img:hover {
-  opacity: 0.9;
-  filter: grayscale(0) brightness(1);
 }
 
 /* ===============================
@@ -821,30 +818,6 @@ i.fa-brands {
   text-align: center;
 }
 
-/* Small pill label above the main about heading */
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--secondary);
-  background-color: #33cccc14;
-}
-
-.section-label {
-  display: inline-block;
-  margin-bottom: 0.9rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--muted-foreground);
-}
-
 .section-about .section-title {
   max-width: 65rem;
   margin-left: auto;
@@ -855,66 +828,6 @@ i.fa-brands {
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-/* ===============================
-   Success Stories
-   =============================== */
-
-.success-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.75rem;
-  margin-top: 2rem;
-}
-
-.success-card {
-  padding: 2.25rem 2.5rem;
-  border-radius: 1.5rem;
-  border: 1px solid #36485ab3;
-  box-shadow: var(--shadow-soft);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.success-quote {
-  font-size: 1rem;
-  line-height: 1.7;
-  color: var(--muted-foreground);
-  margin-bottom: 1.75rem;
-}
-
-.success-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid #36485ab3;
-  padding-top: 1.25rem;
-}
-
-.success-meta-left {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.success-logo {
-  height: 1.75rem;
-  width: auto;
-  object-fit: contain;
-}
-
-.success-org {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--foreground);
-}
-
-@media (min-width: 900px) {
-  .success-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
 }
 
 /* ===============================
@@ -1324,6 +1237,10 @@ i.fa-brands {
   display: flex;
   align-items: center;
   gap: 3rem; /* Adjust gap between columns */
+}
+
+.split-layout.align-top {
+  align-items: flex-start;
 }
 
 .split-layout-content,
@@ -1934,5 +1851,86 @@ i.fa-brands {
   100% {
     top: 110%;
     opacity: 0;
+  }
+}
+
+/* ===============================
+   Benefits Icons (Precise, Affordable, Fast)
+   =============================== */
+.bf-container {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1.5rem;
+}
+
+.bf-inner-icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 48px;
+  height: 48px;
+  overflow: visible;
+}
+
+/* Precise */
+.bf-target-ring {
+  fill: none;
+  stroke: #00f2ff;
+  stroke-width: 2;
+  opacity: 0.5;
+}
+.bf-target-cross {
+  stroke: #00f2ff;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.bf-target-dot {
+  fill: #00f2ff;
+  filter: drop-shadow(0 0 4px #00f2ff);
+  transform-origin: center;
+  animation: bf-pulse 2s infinite ease-in-out;
+}
+
+/* Affordable */
+.bf-rupee {
+  fill: none;
+  stroke: #00f2ff;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 4px #00f2ff);
+}
+
+/* Fast */
+.bf-bolt {
+  fill: none;
+  stroke: #00f2ff;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 5px #00f2ff);
+  animation: bf-flash 1.5s infinite alternate;
+}
+
+@keyframes bf-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+}
+
+@keyframes bf-flash {
+  0% {
+    stroke-opacity: 0.4;
+    filter: drop-shadow(0 0 2px #00f2ff);
+  }
+  100% {
+    stroke-opacity: 1;
+    filter: drop-shadow(0 0 8px #00f2ff);
   }
 }
