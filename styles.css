@@ -34,7 +34,7 @@
   --radius: 1.5rem;
 
   --gradient-primary: linear-gradient(
-    135deg,
+    175deg,
     var(--primary) 0%,
     var(--secondary) 100%
   );
@@ -145,7 +145,7 @@ a {
 
 /* Hero-sized main heading */
 h1 {
-  font-size: clamp(3.9rem, 4vw, 5rem);
+  font-size: clamp(5rem, 4vw, 5rem);
   line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -202,7 +202,7 @@ i.fa-brands {
 
 /* Gradient accent stays as-is */
 .hero-title-accent {
-  background: linear-gradient(90deg, #23e0d8, #23e0d8, #ff2369, #ed1c25);
+  background: linear-gradient(180deg, #23e0d8, #23e0d8, #ff2369, #ed1c25);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -215,17 +215,8 @@ i.fa-brands {
   display: inline-block;
   border-radius: 42px;
   margin: 2rem;
-  background:
-    linear-gradient(var(--background), var(--background)) padding-box,
-    conic-gradient(
-        from var(--gradient-angle),
-        var(--primary),
-        var(--secondary),
-        var(--accent),
-        var(--primary)
-      )
-      border-box;
-  animation: gradient-rotate 3s linear infinite;
+  background: linear-gradient(#4a4545, #0f5f8a) padding-box;
+  color: #59c5c7;
 }
 /* If your hero text is <h1 class="hero-title">, this just keeps margin behavior */
 .hero-title {
@@ -345,9 +336,13 @@ i.fa-brands {
   padding-right: 1.5rem;
 }
 
+.nav-toggle-checkbox {
+  display: none;
+}
+
 /* Mobile menu styles */
 @media (max-width: 767px) {
-  .nav-links.active {
+  .nav-toggle-checkbox:checked ~ .nav-links {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -359,7 +354,7 @@ i.fa-brands {
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-medium);
   }
-  .nav-links.active .nav-cta {
+  .nav-toggle-checkbox:checked ~ .nav-links .nav-cta {
     width: 100%;
   }
 }
@@ -556,6 +551,9 @@ i.fa-brands {
 
 .our-offerings-section {
   background-color: #1c1c1c;
+  padding-bottom: 80px;
+  /* Ensures the fixed header doesn't cover the section title when scrolling */
+  scroll-margin-top: 5rem;
 }
 
 .offerings-layout {
@@ -603,6 +601,10 @@ i.fa-brands {
 
   .contents-section {
     display: contents;
+  }
+
+  .section-vaccine > div {
+    margin-top: 80px;
   }
 
   .pill-wrapper {
@@ -670,8 +672,7 @@ i.fa-brands {
 .feature-card-header {
   display: flex;
   align-items: center;
-  gap: 0;
-  margin-bottom: 1rem;
+  gap: 4px;
 }
 
 .features-grid.vertical {
@@ -690,6 +691,10 @@ i.fa-brands {
 /* ===============================
    Vaccine Genomics
    =============================== */
+
+.section-vaccine {
+  margin-top: 30px;
+}
 
 /* ===============================
    Contact
@@ -719,19 +724,12 @@ i.fa-brands {
 .footer-top {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 2rem;
   margin-bottom: 3rem;
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .footer-brand {
   display: inline-block;
-  margin-bottom: 0.5rem;
 }
 
 .footer-logo-img {
@@ -749,7 +747,6 @@ i.fa-brands {
 .footer-social {
   display: flex;
   gap: 1rem;
-  margin-top: 0.5rem;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -801,6 +798,9 @@ i.fa-brands {
 
 .footer-text {
   color: var(--muted-foreground);
+  font-size: 0.95rem;
+  margin: 0;
+  line-height: 1.6;
 }
 
 .footer-cookie-note {
@@ -809,6 +809,17 @@ i.fa-brands {
   opacity: 0.7;
   margin-top: 30px;
   line-height: 1.5;
+}
+
+.footer-engineered {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  opacity: 0.7;
+  margin-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
 .footer-bottom {
@@ -825,7 +836,9 @@ i.fa-brands {
 
 @media (min-width: 600px) {
   .footer-top {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
   }
 }
 
@@ -1297,7 +1310,7 @@ i.fa-brands {
   width: 120px;
   height: 200vh;
   z-index: 0;
-  opacity: 1;
+  opacity: 0.9;
   pointer-events: none;
   animation: dna-zoom-out linear;
   animation-timeline: scroll();
@@ -1722,15 +1735,14 @@ i.fa-brands {
    =============================== */
 .bf-container {
   position: relative;
-  width: 80px;
+  width: 48px;
   height: 80px;
-  margin-bottom: 1.5rem;
 }
 
 .bf-inner-icon {
   position: absolute;
   top: 16px;
-  left: 16px;
+  left: 0;
   width: 48px;
   height: 48px;
   overflow: visible;

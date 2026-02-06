@@ -184,6 +184,7 @@
     <!-- Header -->
     <header class="site-header">
       <nav class="nav container">
+        <input type="checkbox" id="nav-toggle-cb" class="nav-toggle-checkbox" />
         <a href="index.html#hero" class="nav-logo">
           <img
             src="assets/epidote-logo-glyph.png"
@@ -193,7 +194,7 @@
         </a>
 
         <div class="nav-links">
-          <a href="#product" class="nav-link">Our Offerings</a>
+          <a href="#offerings" class="nav-link">Our Offerings</a>
           <a href="about.html" class="nav-link">About</a>
           <a href="mailto:query@epidote.in" class="btn btn-outline nav-cta">
             Get in touch
@@ -201,7 +202,9 @@
         </div>
 
         <!-- Simple mobile menu (static, no JS) -->
-        <button class="nav-toggle" aria-label="Open menu">☰</button>
+        <label for="nav-toggle-cb" class="nav-toggle" aria-label="Open menu"
+          >☰</label
+        >
       </nav>
     </header>
 
@@ -235,7 +238,7 @@
       </section>
 
       <!-- Product / AntiPath-ML -->
-      <div class="our-offerings-section">
+      <div id="offerings" class="our-offerings-section">
         <div class="container">
           <div class="offerings-layout">
             <!-- Pill Wrapper -->
@@ -253,18 +256,13 @@
               <!-- Column 1: Text -->
               <div class="split-layout-content">
                 <h2 class="section-title">AntiPath-ML</h2>
-                <p class="section-intro-large intro-left">
-                  A self-learning antibiotic resistance screening platform
-                </p>
                 <p class="section-intro-small intro-left">
-                  AntiPath-ML delivers high-accuracy diagnostics for
-                  antimicrobial resistance that learn and evolve in real-time.
-                  By transforming complex genomic datasets into instant,
-                  cost-effective reports, our system empowers clinicians to make
-                  faster, life-saving clinical decisions. Engineered for global
-                  impact, AntiPath-ML optimizes large-scale screening and
-                  vaccine integrity testing, specifically designed to bridge the
-                  diagnostic gap in high-burden, low-resource regions.
+                  AntiPath-ML is our proprietary antimicrobial resistance
+                  screening platform. By learning and evolving in real-time, it
+                  delivers high-accuracy diagnostics that empower clinicians to
+                  make life-saving decisions. Engineered for global impact,
+                  AntiPath-ML performs large-scale screening and vaccine
+                  integrity testing, even in high-burden, low-resource regions.
                 </p>
                 <div class="hero-action" style="text-align: left">
                   <a
@@ -310,8 +308,7 @@
                       <h3 class="feature-title">Precise</h3>
                     </div>
                     <p class="feature-body">
-                      Antipath-ML detects antimicrobial resistance with high
-                      accuracy.
+                      Detects antimicrobial resistance with high accuracy.
                     </p>
                   </div>
 
@@ -329,9 +326,8 @@
                       <h3 class="feature-title">Affordable</h3>
                     </div>
                     <p class="feature-body">
-                      Real time, scalable, and cost-effective diagnostics that
-                      outperform traditional methods, making advanced healthcare
-                      accessible to all.
+                      Cost-effective diagnostics that outperform traditional
+                      methods.
                     </p>
                   </div>
                   <!-- Feature Card 3 -->
@@ -348,8 +344,7 @@
                       <h3 class="feature-title">Fast</h3>
                     </div>
                     <p class="feature-body">
-                      Rapid accuracy enables crucial instant action, better
-                      patient results and smarter strategic planning."
+                      Rapid accuracy for crucial decisions.
                     </p>
                   </div>
                 </div>
@@ -364,10 +359,10 @@
               <!-- Left Column: Text -->
               <div class="split-layout-content">
                 <h2 class="section-title">Vaccine Genomics</h2>
-                <p class="section-intro-large intro-left">
+                <p class="section-intro-small intro-left">
                   Backed by global industry experience, our in house vaccine
                   integrity pipeline has been validated across 19 unique
-                  vaccines and over 250 samples."
+                  vaccines and over 250 samples.
                 </p>
                 <div class="hero-action" style="text-align: left">
                   <a
@@ -384,9 +379,6 @@
                 <div class="features-grid vertical">
                   <div class="feature-card centered-content">
                     <div class="vi-container" style="margin-bottom: 1.5rem">
-                      <svg class="vi-hex-border" viewBox="0 0 100 100">
-                        <path d="M50 5 L95 27.5 V72.5 L50 95 L5 72.5 V27.5 Z" />
-                      </svg>
                       <svg class="vi-dna-svg" viewBox="0 0 50 100">
                         <line x1="15" y1="20" x2="35" y2="20" class="vi-rung" />
                         <line x1="15" y1="40" x2="35" y2="40" class="vi-rung" />
@@ -409,14 +401,10 @@
                       </svg>
                     </div>
                     <h3 class="feature-title">Genome integrity confirmation</h3>
-                    <p class="feature-body">Placeholder p1 description</p>
                   </div>
 
                   <div class="feature-card centered-content">
                     <div class="va-container" style="margin-bottom: 1.5rem">
-                      <svg class="va-hex-border" viewBox="0 0 100 100">
-                        <path d="M50 5 L95 27.5 V72.5 L50 95 L5 72.5 V27.5 Z" />
-                      </svg>
                       <div class="va-dna-scroll-mask">
                         <svg
                           class="va-dna-tall-track"
@@ -472,14 +460,10 @@
                       </div>
                     </div>
                     <h3 class="feature-title">Variant analyses</h3>
-                    <p class="feature-body">Placeholder p1 description</p>
                   </div>
 
                   <div class="feature-card centered-content">
                     <div class="mx-container" style="margin-bottom: 1.5rem">
-                      <svg class="mx-hex-border" viewBox="0 0 100 100">
-                        <path d="M50 5 L95 27.5 V72.5 L50 95 L5 72.5 V27.5 Z" />
-                      </svg>
                       <div class="mx-screen-mask">
                         <div class="mx-scanner"></div>
                         <svg class="mx-grid-svg" viewBox="0 0 60 60">
@@ -513,7 +497,6 @@
                     <h3 class="feature-title">
                       Multiplexed contaminant screening
                     </h3>
-                    <p class="feature-body">Placeholder p1 description</p>
                   </div>
                 </div>
               </div>
@@ -546,36 +529,31 @@
       <div class="container">
         <div class="footer-top">
           <!-- 1. Brand & Identity -->
-          <div class="footer-col brand-col">
-            <div class="footer-brand">
-              <img
-                src="assets/epidote-logo.png"
-                alt="Epidote Healthcare"
-                class="footer-logo-img"
-              />
-            </div>
-            <p class="footer-mission">
-              Advancing global health through AI-driven genomic insights.
-            </p>
-            <div class="footer-social">
-              <a href="#" target="_blank" aria-label="LinkedIn">
-                <i class="fa-brands fa-linkedin"></i>
-              </a>
-              <a href="#" target="_blank" aria-label="X Twitter">
-                <i class="fa-brands fa-x-twitter"></i>
-              </a>
-              <a
-                href="mailto:query@epidote.in"
-                target="_blank"
-                aria-label="Email"
-              >
-                <i class="fa-solid fa-envelope"></i> query@epidote.in
-              </a>
-            </div>
+          <div class="footer-brand">
+            <img
+              src="assets/epidote-logo.png"
+              alt="Epidote Healthcare"
+              class="footer-logo-img"
+            />
+          </div>
+          <div class="footer-social">
+            <a href="#" target="_blank" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="#" target="_blank" aria-label="X Twitter">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a
+              href="mailto:query@epidote.in"
+              target="_blank"
+              aria-label="Email"
+            >
+              <i class="fa-solid fa-envelope"></i> query@epidote.in
+            </a>
           </div>
 
           <!-- 3. Company & Contact -->
-          <div class="footer-col">
+          <div class="footer-company">
             <h4 class="footer-heading">Company</h4>
             <ul class="footer-nav">
               <li><a href="about.html" class="footer-link">About Us</a></li>
@@ -588,6 +566,13 @@
               </li>
             </ul>
           </div>
+          <div class="address">
+            <h4 class="footer-heading">Address</h4>
+            <p class="footer-text">
+              S. No. 8/17, Karve Road, Erandwana, Pune, Maharashtra 411004,
+              India
+            </p>
+          </div>
         </div>
 
         <div class="footer-bottom">
@@ -598,9 +583,11 @@
             No-Cookie Site: We respect your privacy and do not use tracking
             cookies.
           </p>
+          <p class="footer-engineered">
+            <i class="fa-solid fa-vial"></i> Synthesized in India
+          </p>
         </div>
       </div>
     </footer>
-    <script src="main.js"></script>
   </body>
 </html>
