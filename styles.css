@@ -563,6 +563,12 @@ i.fa-brands {
   position: relative;
 }
 
+.contents-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
 .pill-wrapper {
   display: flex;
   justify-content: center;
