@@ -285,6 +285,8 @@ i.fa-brands {
   display: flex;
   align-items: center;
   height: 4.5rem;
+  position: relative;
+  width: 100%;
 }
 
 /* LOGO – pinned left */
@@ -351,8 +353,10 @@ i.fa-brands {
     top: 100%;
     left: 0;
     right: 0;
+    width: 100vw;
+    margin-left: calc(-1.5rem);
     background-color: var(--background); /* #0f0f0f */
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-medium);
     z-index: 100; /* CRITICAL: Keeps it above the Hero section */
