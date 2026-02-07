@@ -351,13 +351,20 @@ i.fa-brands {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--background);
-    padding: 1.5rem;
+    background-color: var(--background); /* #0f0f0f */
+    padding: 2rem;
     border-bottom: 1px solid var(--border);
     box-shadow: var(--shadow-medium);
+    z-index: 100; /* CRITICAL: Keeps it above the Hero section */
+    gap: 1.5rem; /* Adds spacing between menu items */
+    text-align: center;
   }
-  .nav-toggle-checkbox:checked ~ .nav-links .nav-cta {
+
+  /* Ensure individual links are visible and easy to tap */
+  .nav-links .nav-link {
+    font-size: 1.2rem;
     width: 100%;
+    padding: 0.5rem 0;
   }
 }
 
