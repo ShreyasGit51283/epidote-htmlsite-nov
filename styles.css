@@ -319,6 +319,8 @@ i.fa-brands {
 /* MOBILE: burger right */
 .nav-toggle {
   margin-left: auto;
+  display: flex;
+  align-items: center;
   background: transparent;
   border: none;
   color: var(--secondary);
