@@ -1558,7 +1558,7 @@ i.fa-brands {
   filter: drop-shadow(0 0 5px #00f2ff);
   stroke-dasharray: 30;
   stroke-dashoffset: 30;
-  animation: vi-drawCheck 3s ease-in-out infinite;
+  animation: vi-drawCheck 1s ease-in-out infinite;
 }
 
 @keyframes vi-drawCheck {
